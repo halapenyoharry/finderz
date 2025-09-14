@@ -1,0 +1,46 @@
+# Build directories
+build/
+_build/
+*.o
+*.lo
+*.la
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+*~
+.idea/
+
+# Generated files
+*.gresource
+*.compiled
+config.h
+config.log
+config.status
+
+# Dependencies
+.deps/
+.libs/
+
+# Package files
+*.deb
+*.rpm
+*.tar.gz
+*.tar.xz
+
+# Nemo upstream
+nemo-upstream/
+
+# macOS files (for testing)
+.DS_Store
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Backup files
+*.backup
+*.old

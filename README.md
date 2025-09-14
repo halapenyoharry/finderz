@@ -1,0 +1,104 @@
+# Finderz
+
+A better file explorer inspired by macOS Finder, with enhanced sorting, grouping, and network volume support.
+
+## Vision
+
+Finderz aims to be a superior file management experience that combines the visual elegance of macOS Finder with powerful customization options and cross-platform compatibility. Built for Linux (Pop!_OS 22.04) with the ability to leverage macOS metadata when available.
+
+## Key Features
+
+### 🗂️ Smart .DS_Store Integration
+- Read and utilize .DS_Store metadata from macOS volumes
+- Preserve macOS folder view settings across network shares
+- Seamless integration with mixed macOS/Linux environments
+
+### 🔄 Advanced Sorting Profiles
+- Create multiple sorting presets (e.g., "Always by date, then name")
+- Quick-switch between sorting configurations
+- Per-directory sorting memory
+
+### 📊 Flexible Grouping System
+- Customizable grouping ranges (not limited to Finder's presets)
+- Multi-level grouping criteria
+- User-defined grouping templates
+
+### ⚙️ Customization Sets
+- 3-4 different view/behavior profiles
+- Quick profile switching based on context
+- Per-user and per-directory settings persistence
+
+## Technical Stack
+
+- **Target OS**: Pop!_OS 22.04 (Ubuntu-based)
+- **Base**: Fork of existing Linux file manager (TBD)
+- **Language**: (Based on forked project)
+- **UI Framework**: (Based on forked project)
+
+## Project Structure
+
+```
+finderz/
+├── README.md           # This file
+├── docs/              # Documentation
+├── src/               # Source code
+├── config/            # Configuration templates
+└── scripts/           # Build and utility scripts
+```
+
+## Development Roadmap
+
+### Phase 1: Foundation
+- [ ] Select and fork base file manager
+- [ ] Set up development environment
+- [ ] Basic .DS_Store parser implementation
+
+### Phase 2: Core Features
+- [ ] Implement sorting profiles
+- [ ] Create grouping system
+- [ ] Add settings management
+
+### Phase 3: Enhancement
+- [ ] Network volume support
+- [ ] Performance optimization
+- [ ] UI/UX refinements
+
+### Phase 4: Polish
+- [ ] User testing
+- [ ] Documentation
+- [ ] Package for distribution
+
+## Getting Started
+
+### Prerequisites
+- Pop!_OS 22.04 or compatible Ubuntu-based distribution
+- Development tools (gcc, make, etc.)
+- Git
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/halapenyoharry/finderz.git
+cd finderz
+
+# Build instructions will depend on the forked base
+# TBD after selection
+```
+
+## Contributing
+
+Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+
+## License
+
+TBD - Will depend on the license of the forked project
+
+## Acknowledgments
+
+- macOS Finder for design inspiration
+- The open-source file manager community
+- .DS_Store reverse engineering efforts
+
+---
+
+*Finderz - Where better file management begins*

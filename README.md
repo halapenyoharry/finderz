@@ -2,9 +2,22 @@
 
 A better file explorer inspired by macOS Finder, with enhanced sorting, grouping, and network volume support.
 
+## Why Finderz?
+
+The 'z' means we're not trying to be perfect - we're trying to be *useful*. This is a filesystem manager built for the reality of mixed Mac/Linux studios where you need both platforms to play nice together. 
+
+### The Philosophy
+
+The ultimate creative studio runs both Mac and Linux boxes on the same LAN:
+- **Macs** for creative tools, audio/video production, design work
+- **Linux** boxes for development, servers, compute, and actual file management
+- **Shared storage** that somehow needs to work well for everyone
+
+Finderz bridges this gap by actually reading and respecting the `.DS_Store` files Macs leave everywhere, turning what's usually considered "pollution" into useful metadata. Your Mac colleagues set up a careful folder view? Finderz will respect it. But unlike Finder, you can also override it with better sorting rules when needed.
+
 ## Vision
 
-Finderz aims to be a superior file management experience that combines the visual elegance of macOS Finder with powerful customization options and cross-platform compatibility. Built for Linux (Pop!_OS 22.04) with the ability to leverage macOS metadata when available.
+Finderz aims to be a superior file management experience that combines the visual elegance of macOS Finder with powerful customization options and cross-platform compatibility. Built for Linux (Pop!_OS 22.04) with the ability to leverage macOS metadata when available. A little janky? Maybe. More useful than Finder? Definitely.
 
 ## Key Features
 
@@ -46,11 +59,26 @@ finderz/
 └── scripts/           # Build and utility scripts
 ```
 
+## Use Cases
+
+### Mixed Studio Environment
+- **SMB/AFP shares** from Mac servers that are full of .DS_Store files
+- **NAS devices** accessed by both Mac and Linux machines  
+- **External drives** formatted as exFAT that move between systems
+- **Git repositories** where Mac devs accidentally committed .DS_Store files (now they're features!)
+
+### The "Mac Handoff"
+When your Mac colleague sends you a carefully organized project folder, Finderz will:
+- Respect their icon positions and view settings
+- But still let you sort by date modified when you need to find the latest files
+- Show you their color labels and tags
+- Let you add your own Linux-side organization on top
+
 ## Development Roadmap
 
 ### Phase 1: Foundation
-- [ ] Select and fork base file manager
-- [ ] Set up development environment
+- [x] Fork Nemo as base
+- [x] Set up development environment
 - [ ] Basic .DS_Store parser implementation
 
 ### Phase 2: Core Features

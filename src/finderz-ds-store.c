@@ -6,11 +6,21 @@
 #include "finderz-ds-store.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
+#include <arpa/inet.h>
 
 /* DS_Store file structure constants */
 #define DS_STORE_MAGIC_1 0x00000001
 #define DS_STORE_MAGIC_2 "Bud1"
 #define DS_STORE_BLOCK_SIZE 4096
+
+/* Record type codes found in DS_Store files */
+#define DS_STORE_CODE_ILOC "Iloc"  /* Icon location */
+#define DS_STORE_CODE_BWSP "bwsp"  /* Browser window settings plist */
+#define DS_STORE_CODE_LSVP "lsvp"  /* List view settings plist */
+#define DS_STORE_CODE_LSVP_CAP "lsvP"  /* List view settings plist (alternate) */
+#define DS_STORE_CODE_ICVP "icvp"  /* Icon view settings plist */
+#define DS_STORE_CODE_VMOD "vmod"  /* View mode */
 
 struct _FinderzDSStore {
     GObject parent_instance;
@@ -76,25 +86,45 @@ read_ds_store_header (FILE *file, GError **error)
 {
     guint32 magic1;
     char magic2[4];
+    guint32 offset_info[3];
     
+    /* Read first magic number (should be 0x00000001) */
     if (fread (&magic1, sizeof(guint32), 1, file) != 1) {
         g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                      "Failed to read DS_Store magic number 1");
         return FALSE;
     }
     
+    /* Convert from big-endian */
+    magic1 = ntohl(magic1);
+    if (magic1 != DS_STORE_MAGIC_1) {
+        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     "Invalid DS_Store magic number 1: 0x%08x", magic1);
+        return FALSE;
+    }
+    
+    /* Read "Bud1" magic string */
     if (fread (magic2, 1, 4, file) != 4) {
         g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                      "Failed to read DS_Store magic number 2");
         return FALSE;
     }
     
-    /* Basic validation - real implementation would need byte swapping for endianness */
     if (memcmp (magic2, DS_STORE_MAGIC_2, 4) != 0) {
         g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                     "Invalid DS_Store file format");
+                     "Invalid DS_Store file format - expected 'Bud1'");
         return FALSE;
     }
+    
+    /* Read offset information (we don't use it yet, but validates file) */
+    if (fread (offset_info, sizeof(guint32), 3, file) != 3) {
+        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     "Failed to read DS_Store offset information");
+        return FALSE;
+    }
+    
+    g_debug ("FINDERZ: Valid DS_Store header found - magic1=0x%08x, magic2='%c%c%c%c'",
+             magic1, magic2[0], magic2[1], magic2[2], magic2[3]);
     
     return TRUE;
 }

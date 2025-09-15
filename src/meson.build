@@ -17,6 +17,8 @@ nemoBuiltSources = gnome.gdbus_codegen(
 nemoCommon_sources = [
   dbusBuiltSources,
   nemoBuiltSources,
+  'finderz-ds-store.c',
+  'finderz-integration.c',
   'nemo-action-config-widget.c',
   'nemo-application.c',
   'nemo-blank-desktop-window.c',

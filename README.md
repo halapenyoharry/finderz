@@ -1,5 +1,11 @@
 # Finderz
 
+[![Version](https://img.shields.io/badge/version-0.0.1--alpha-orange)](https://github.com/halapenyoharry/finderz/releases)
+[![License](https://img.shields.io/badge/license-GPL%20v2-blue)](LICENSE)
+[![Status](https://img.shields.io/badge/status-early%20alpha-red)](https://github.com/halapenyoharry/finderz)
+
+⚠️ **EARLY ALPHA**: This is experimental software. Expect bugs, incomplete features, and breaking changes.
+
 A better file explorer inspired by macOS Finder, with enhanced sorting, grouping, and network volume support.
 
 ## Why Finderz?
@@ -119,7 +125,7 @@ Contributions are welcome! Please read our contributing guidelines before submit
 
 ## License
 
-TBD - Will depend on the license of the forked project
+GPL v2 - Same as Nemo, which Finderz is forked from. See [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 

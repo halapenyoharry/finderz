@@ -19,6 +19,7 @@ nemoCommon_sources = [
   nemoBuiltSources,
   'finderz-ds-store.c',
   'finderz-integration.c',
+  'finderz-column-provider.c',
   'nemo-action-config-widget.c',
   'nemo-application.c',
   'nemo-blank-desktop-window.c',

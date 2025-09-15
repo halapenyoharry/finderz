@@ -78,6 +78,10 @@ finderz_ds_store_data_free (FinderzDSStoreData *data)
         g_hash_table_destroy (data->icon_locations);
     }
     
+    if (data->color_labels) {
+        g_hash_table_destroy (data->color_labels);
+    }
+    
     g_free (data);
 }
 
@@ -164,6 +168,8 @@ finderz_ds_store_parse_file (FinderzDSStore *ds_store,
     data->sort_column = g_strdup ("name");
     data->icon_locations = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                    g_free, g_free);
+    data->color_labels = g_hash_table_new_full (g_str_hash, g_str_equal,
+                                                 g_free, g_free);
     
     /* TODO: Implement actual DS_Store parsing
      * This requires:
@@ -206,4 +212,46 @@ finderz_ds_store_get_cached_data (FinderzDSStore *ds_store,
     g_return_val_if_fail (directory_path != NULL, NULL);
     
     return g_hash_table_lookup (ds_store->cache, directory_path);
+}
+
+/* Get icon position for a specific file */
+FinderzIconPosition*
+finderz_ds_store_get_icon_position (FinderzDSStoreData *data,
+                                     const gchar *filename)
+{
+    if (!data || !data->icon_locations || !filename) {
+        return NULL;
+    }
+    
+    return g_hash_table_lookup (data->icon_locations, filename);
+}
+
+/* Get color label for a specific file */
+gint
+finderz_ds_store_get_color_label (FinderzDSStoreData *data,
+                                   const gchar *filename)
+{
+    gpointer value;
+    
+    if (!data || !data->color_labels || !filename) {
+        return -1;
+    }
+    
+    value = g_hash_table_lookup (data->color_labels, filename);
+    if (value) {
+        return GPOINTER_TO_INT (value);
+    }
+    
+    return -1;
+}
+
+/* Get the sort column preference */
+const gchar*
+finderz_ds_store_get_sort_column (FinderzDSStoreData *data)
+{
+    if (!data) {
+        return NULL;
+    }
+    
+    return data->sort_column;
 }

@@ -37,6 +37,12 @@ typedef enum {
     FINDERZ_VIEW_GALLERY = 3
 } FinderzViewStyle;
 
+/* Icon position data */
+typedef struct {
+    gint x;
+    gint y;
+} FinderzIconPosition;
+
 /* Structure to hold parsed DS_Store data for a directory */
 typedef struct {
     FinderzViewStyle view_style;
@@ -47,7 +53,8 @@ typedef struct {
     gboolean show_item_info;
     gchar *sort_column;
     gchar *background_image_path;
-    GHashTable *icon_locations; /* filename -> (x,y) position */
+    GHashTable *icon_locations; /* filename -> FinderzIconPosition* */
+    GHashTable *color_labels; /* filename -> color label index */
     GdkRectangle window_bounds;
 } FinderzDSStoreData;
 
@@ -60,6 +67,13 @@ void finderz_ds_store_data_free (FinderzDSStoreData *data);
 gboolean finderz_ds_store_exists_for_directory (const gchar *directory_path);
 FinderzDSStoreData* finderz_ds_store_get_cached_data (FinderzDSStore *ds_store,
                                                        const gchar *directory_path);
+
+/* Get metadata for specific files */
+FinderzIconPosition* finderz_ds_store_get_icon_position (FinderzDSStoreData *data,
+                                                          const gchar *filename);
+gint finderz_ds_store_get_color_label (FinderzDSStoreData *data,
+                                        const gchar *filename);
+const gchar* finderz_ds_store_get_sort_column (FinderzDSStoreData *data);
 
 G_END_DECLS
 

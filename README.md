@@ -29,6 +29,11 @@ Finderz aims to be a superior file management experience that combines the visua
 
 ### 🗂️ Smart .DS_Store Integration
 - Read and utilize .DS_Store metadata from macOS volumes
+- Show Mac metadata as columns in list view:
+  - Icon positions from Finder
+  - View preferences (Icon/List/Column/Gallery)
+  - Color labels
+  - Sort preferences
 - Preserve macOS folder view settings across network shares
 - Seamless integration with mixed macOS/Linux environments
 

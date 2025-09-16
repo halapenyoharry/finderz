@@ -24,6 +24,7 @@ nemoCommon_sources = [
   'finderz-xattr-handler.c',
   'finderz-exif-extractor.c',
   'finderz-universal-metadata.c',
+  'finderz-file-attributes.c',
   'nemo-action-config-widget.c',
   'nemo-application.c',
   'nemo-blank-desktop-window.c',

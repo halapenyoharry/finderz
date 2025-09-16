@@ -6845,6 +6845,22 @@ nemo_file_get_string_attribute_q (NemoFile *file, GQuark attribute_q)
 		return nemo_file_get_volume_free_space (file);
 	}
 
+	/* FINDERZ: Check for our metadata attributes */
+	{
+		const gchar *attribute_str = g_quark_to_string (attribute_q);
+		if (attribute_str) {
+			extern gboolean finderz_is_metadata_attribute (const gchar *attribute);
+			extern gchar* finderz_file_get_metadata_attribute (NemoFile *file, const gchar *attribute);
+			
+			if (finderz_is_metadata_attribute (attribute_str)) {
+				gchar *value = finderz_file_get_metadata_attribute (file, attribute_str);
+				if (value) {
+					return value;
+				}
+			}
+		}
+	}
+	
 	extension_attribute = NULL;
 
 	if (file->details->pending_extension_attributes) {

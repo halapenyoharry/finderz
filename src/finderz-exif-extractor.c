@@ -19,6 +19,9 @@ typedef struct {
     /* data follows */
 } PNGChunk;
 
+/* Forward declarations */
+static void parse_sd_parameters (GHashTable *metadata, const gchar *params);
+
 /* Extract metadata from PNG text chunks (ComfyUI, SD, etc) */
 static GHashTable*
 extract_png_metadata (const gchar *filepath)

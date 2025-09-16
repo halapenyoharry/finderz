@@ -93,6 +93,15 @@ main (int argc, char *argv[])
 
 	/* Run the nemo application. */
 	application = nemo_main_application_get_singleton ();
+	
+	/* FINDERZ: Initialize metadata systems */
+	{
+		extern void finderz_init (void);
+		extern void finderz_file_attributes_init (void);
+		finderz_init ();
+		finderz_file_attributes_init ();
+		g_message ("FINDERZ: Metadata systems initialized");
+	}
 
     /* hold indefinitely if we're asked to persist */
     if (g_getenv ("NEMO_PERSIST") != NULL) {

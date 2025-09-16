@@ -120,14 +120,31 @@ When your Mac colleague sends you a carefully organized project folder, Finderz 
 - Development tools (gcc, make, etc.)
 - Git
 
-### Installation
+### Build & Test
 ```bash
 # Clone the repository
 git clone https://github.com/halapenyoharry/finderz.git
 cd finderz
 
-# Build instructions will depend on the forked base
-# TBD after selection
+# Install dependencies
+bash install-deps.sh
+
+# Build Finderz
+meson setup build
+cd build && ninja
+
+# Test metadata extraction
+bash ../test-metadata.sh
+
+# Run Finderz with debug output
+G_MESSAGES_DEBUG=all ./src/nemo
+
+# To see metadata columns:
+# 1. Navigate to folder with images
+# 2. Switch to list view (Ctrl+2)
+# 3. Right-click column header
+# 4. Select "Visible Columns..."
+# 5. Enable: AI Prompt, AI Model, Rating, etc
 ```
 
 ## Contributing

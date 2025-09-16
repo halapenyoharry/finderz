@@ -43,16 +43,15 @@ endforeach
 conf.set10('HAVE_MALLOPT', cc.has_function('mallopt', prefix: '#include <malloc.h>'))
 
 
-if not get_option('deprecated_warnings')
-  add_global_arguments([
-      '-Wno-deprecated-declarations',
-      '-Wno-deprecated',
-      '-Wno-declaration-after-statement',
-      '-DGLIB_DISABLE_DEPRECATION_WARNINGS',
-    ],
-    language: 'c',
-  )
-endif
+# Disable deprecated warnings by default for cleaner build
+add_global_arguments([
+    '-Wno-deprecated-declarations',
+    '-Wno-deprecated',
+    '-Wno-declaration-after-statement',
+    '-DGLIB_DISABLE_DEPRECATION_WARNINGS',
+  ],
+  language: 'c',
+)
 
 if buildtype in ['debug', 'debugoptimized']
     conf.set('ENABLE_DEBUG', true)

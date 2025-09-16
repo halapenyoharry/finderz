@@ -23,9 +23,14 @@ echo "Press Enter to continue or Ctrl+C to cancel..."
 read
 
 echo "Updating package lists..."
+echo "This requires sudo access to install system packages."
+echo ""
 sudo apt update
 
+echo ""
 echo "Installing build dependencies..."
+echo "This will install approximately 100MB of packages."
+echo ""
 sudo apt install -y \
     meson \
     ninja-build \

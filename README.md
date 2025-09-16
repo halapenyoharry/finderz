@@ -10,7 +10,7 @@ A better file explorer inspired by macOS Finder, with enhanced sorting, grouping
 
 ## Why Finderz?
 
-The 'z' means we're not trying to be perfect - we're trying to be *useful*. This is a filesystem manager built for the reality of mixed Mac/Linux studios where you need both platforms to play nice together. 
+The 'z' means we're not trying to be perfect - we're trying to be *useful*. This is a filesystem manager built for the reality of mixed environments where ALL metadata matters - whether it's from Macs, cameras, AI tools, or any other source. 
 
 ### The Philosophy
 
@@ -27,13 +27,19 @@ Finderz aims to be a superior file management experience that combines the visua
 
 ## Key Features
 
+### 🌐 Universal Metadata Awareness
+**ALL metadata is sortable, viewable, and filterable:**
+- **Mac metadata** (.DS_Store): Icon positions, view preferences, color labels
+- **EXIF data**: Camera, lens, settings, GPS location, date taken
+- **AI generation metadata**: Prompts, models, samplers, seeds, workflows (ComfyUI/SD/Midjourney)
+- **XMP sidecars**: Adobe Lightroom edits, ratings, keywords
+- **Extended attributes**: Linux xattrs, macOS resource forks
+- **Audio/Video**: Duration, codec, bitrate, dimensions
+- **Office documents**: Author, revision history, comments
+- **Any sidecar files**: .metadata, .json, custom formats
+
 ### 🗂️ Smart .DS_Store Integration
 - Read and utilize .DS_Store metadata from macOS volumes
-- Show Mac metadata as columns in list view:
-  - Icon positions from Finder
-  - View preferences (Icon/List/Column/Gallery)
-  - Color labels
-  - Sort preferences
 - Preserve macOS folder view settings across network shares
 - Seamless integration with mixed macOS/Linux environments
 
